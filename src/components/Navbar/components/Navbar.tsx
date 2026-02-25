@@ -11,6 +11,7 @@ import {
   SlideoutCloseButton,
 } from "./Navbar.styles";
 import { MenuIcon, X } from "lucide-react";
+import {CircularProgressBar} from "@/components/ui/CircularProgressBar/CircularProgressBar";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -24,12 +25,10 @@ export const Navbar = () => {
 
         <DesktopMenuLinks>
           <li>
-            {" "}
-            <MenuLink href={"/"}>Home</MenuLink>{" "}
+            <MenuLink to={'/'}>Home</MenuLink>{" "}
           </li>
           <li>
-            {" "}
-            <MenuLink href={"#"}>Topics </MenuLink>
+            <MenuLink to={"#"}>Topics </MenuLink>
           </li>
         </DesktopMenuLinks>
 
@@ -55,12 +54,13 @@ export const Navbar = () => {
         </SlideoutHeader>
 
         <MobileMenuLinks>
+          <div>
+            <CircularProgressBar />
+          </div>
           <li>
-            {" "}
             <MenuLink href={"/"}>Home</MenuLink>{" "}
           </li>
           <li>
-            {" "}
             <MenuLink href={"#"}>Topics </MenuLink>
           </li>
         </MobileMenuLinks>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from '@tanstack/react-router';
 
 export const NavbarRoot = styled.header`
   height: 84px;
@@ -85,7 +86,7 @@ export const MobileMenuLinks = styled.ul`
   gap: 16px;
 `;
 
-export const MenuLink = styled.a`
+export const MenuLink = styled(Link)`
   text-decoration: none;
 `;
 
