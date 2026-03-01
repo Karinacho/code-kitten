@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Topic {
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  createdAt     DateTime       @default(now())
+  flashcards    Flashcard[]
+  questionAreas QuestionArea[]
+}
+
+model QuestionArea {
+  id           Int          @id @default(autoincrement())
+  title        String
+  summary      String?
+  learningText String?
+  codeSnippet  String?
+  imageUrl     String?
+  createdAt    DateTime     @default(now())
+
+  // relations
+  flashcards Flashcard[]
+  topics     Topic[]
+}
+
+model Flashcard {
+  id        Int      @id @default(autoincrement())
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+
+  topicId        Int
+  topic          Topic        @relation(fields: [topicId], references: [id])
+
+  questionAreaId Int
+  questionArea   QuestionArea @relation(fields: [questionAreaId], references: [id])
+}

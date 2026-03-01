@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: codekitten-db
+    environment:
+      POSTGRES_USER: codekitten_user
+      POSTGRES_PASSWORD: codekitten_pass
+      POSTGRES_DB: codekitten
+    ports:
+      - "5432:5432"
+    volumes:
+      - codekitten_data:/var/lib/postgresql/data
+
+volumes:
+  codekitten_data:
